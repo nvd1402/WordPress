@@ -12,7 +12,10 @@
                         <?php if ( has_post_thumbnail() ) : ?>
                             <?php the_post_thumbnail('large', array('class' => 'img-fluid rounded shadow')); ?>
                         <?php else : ?>
-                            <img src="https://via.placeholder.com/600x400" class="img-fluid rounded shadow" alt="<?php the_title(); ?>">
+                            <img src="<?php echo get_template_directory_uri(); ?>/tdc.png"
+                                 class="img-fluid rounded shadow"
+                                 alt="<?php the_title(); ?>">
+
                         <?php endif; ?>
                     </a>
                 </div>
