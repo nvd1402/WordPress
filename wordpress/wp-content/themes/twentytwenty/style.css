@@ -53,6 +53,87 @@ with others.
 
 /*	0. CSS Reset
 /* -------------------------------------------------------------------------- */
+/* ==== Layout bài viết dạng danh sách ==== */
+
+/* Bố cục 2 cột */
+article.post-item .post-inner {
+	display: grid;
+	grid-template-columns: 100px 1fr;
+	gap: 15px;
+	align-items: flex-start;
+	padding: 20px 0;
+	border-bottom: none;
+	position: relative;
+}
+
+/* Thanh dọc duy nhất giữa 2 cột */
+article.post-item .post-inner::after {
+	content: "";
+	position: absolute;
+	top: 5px;        /* dư trên */
+	bottom: 5px;     /* dư dưới */
+	left: 100px;     /* đúng vị trí cột ngày */
+	width: 2px;
+	background: #999; /* màu thanh dọc */
+}
+
+/* ===== Cột ngày ===== */
+article.post-item .post-date {
+	text-align: center;
+	min-width: 80px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 5px 10px;
+
+	border-right: none; /* bỏ border thừa */
+}
+
+article.post-item .post-date .day {
+	font-size: 28px;
+	font-weight: bold;
+	color: #333;
+	line-height: 1.2;
+}
+
+article.post-item .post-date .month {
+	font-size: 12px;
+	text-transform: uppercase;
+	color: #666;
+	margin-top: 5px;
+}
+
+/* ===== Nội dung ===== */
+article.post-item .post-content {
+	padding-left: 20px;
+	max-width: 60%;
+
+}
+
+article.post-item .post-title {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 5px;
+	color: #0056a6;
+	margin-top: 0; /* căn thẳng hàng với ngày */
+}
+
+article.post-item .post-title a {
+	text-decoration: none;
+	color: inherit;
+}
+
+article.post-item .post-title a:hover {
+	color: #003d73;
+	text-decoration: underline;
+}
+
+article.post-item .post-excerpt {
+	font-size: 14px;
+	color: #444;
+	line-height: 1.5;
+}
+
 
 
 html,
@@ -106,12 +187,6 @@ blockquote::before,
 blockquote::after {
 	content: "";
 }
-li.icon-home > a::before {
-	content: "\f015"; /* unicode icon home */
-	font-family: "Font Awesome 5 Free";
-	font-weight: 900;
-	margin-right: 6px;
-}
 
 
 /* -------------------------------------------------------------------------- */
@@ -136,64 +211,10 @@ body {
 	box-sizing: border-box;
 	color: #000;
 	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
-	font-size: 1rem;
+	font-size: 1.8rem;
 	letter-spacing: -0.015em;
 	text-align: left;
 }
-
-.footer-widgets-wrapper {
-	display: flex;
-	flex-wrap: wrap; /* cho phép xuống hàng */
-	gap: 30px;       /* khoảng cách giữa các cột */
-}
-
-/* Ba cột đầu trên cùng một hàng */
-.footer-widgets.column-one,
-.footer-widgets.column-two,
-.footer-widgets.column-three {
-	flex: 1 1 20%; /* mỗi cột chiếm khoảng 30% */
-}
-
-/* Cột thứ 4 xuống hẳn hàng dưới */
-.footer-widgets.column-four {
-	flex: 1 1 100%;  /* full chiều ngang hàng dưới */
-	order: 4;        /* ép nó xuống hàng */
-	margin-top: 30px;
-	text-align: center;
-}
-
-.footer-widgets .widget-content h2.wp-block-heading {
-	font-size: 30px;
-	font-weight: bolder;
-
-}
-.footer-widgets .widget-content h2.wp-block-heading {
-	position: relative;
-	padding-left: 20px; /* cách chữ ra xa */
-	font-size: 30px;
-
-	/* gạch */
-	border-left: 3px solid #fff; /* độ dày + màu */
-	line-height: 1.8; /* cao hơn để gạch dài */
-}
-/* Áp dụng cho link menu trong footer widget */
-.footer-widgets-wrapper .widget_nav_menu ul li a {
-	display: inline-block;
-	color: #fff;                /* màu chữ */
-	font-weight: normal;        /* bình thường trước hover */
-	text-decoration: none;
-	transition: all 0.3s ease;  /* tạo hiệu ứng trượt + in đậm */
-	font-size: 20px;
-}
-
-
-
-
-.footer-widgets nav ul li a::before {
-	content: "» ";
-}
-
-
 
 @supports ( font-variation-settings: normal ) {
 
@@ -233,41 +254,323 @@ path {
 	transition: all 0.15s linear;
 }
 
-/* Bỏ background mặc định + đổi màu icon trắng */
-.wp-block-social-links.is-layout-flex .wp-social-link,
-.wp-block-social-links.is-layout-flex .wp-social-link a,
-.wp-block-social-links.is-layout-flex .wp-social-link svg,
-.wp-block-social-links.is-layout-flex .wp-social-link svg path {
-	background-color: transparent !important; /* bỏ nền */
-	color: #fff !important;                  /* icon theo currentColor */
-	fill: currentColor !important;           /* ép fill SVG */
+
+/* Start Footer Custom*/
+/* Footer */
+section {
+	padding: 60px 0;
 }
 
-/* Đổi màu khi hover (ví dụ xanh) */
-.wp-block-social-links.is-layout-flex .wp-social-link:hover,
-.wp-block-social-links.is-layout-flex .wp-social-link a:hover,
-.wp-block-social-links.is-layout-flex .wp-social-link svg:hover,
-.wp-block-social-links.is-layout-flex .wp-social-link svg path:hover {
-	color: #1da1f2 !important; /* màu hover */
-	fill: currentColor !important;
+section .section-title {
+	text-align: center;
+	color: #007b5e;
+	margin-bottom: 50px;
+	text-transform: uppercase;
 }
+#footer {
+	background: #007b5e !important;
+}
+#footer h5{
+	padding-left: 10px;
+	border-left: 3px solid #eeeeee;
+	padding-bottom: 6px;
+	margin-bottom: 20px;
+	color:#ffffff;
+}
+#footer a {
+	color: #ffffff;
+	text-decoration: none !important;
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects;
+}
+#footer ul.social li{
+	padding: 3px 0;
+}
+#footer ul.social li a i {
+	margin-right: 5px;
+	font-size:25px;
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+}
+#footer ul.social li:hover a i {
+	font-size:30px;
+	margin-top:-10px;
+}
+#footer ul.social li a,
+#footer ul.quick-links li a{
+	color:#ffffff;
+}
+#footer ul.social li a:hover{
+	color:#eeeeee;
+}
+#footer ul.quick-links li{
+	padding: 3px 0;
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+}
+#footer ul.quick-links li:hover{
+	padding: 3px 0;
+	margin-left:5px;
+	font-weight:700;
+}
+#footer ul.quick-links li a i{
+	margin-right: 5px;
+}
+#footer ul.quick-links li:hover a i {
+	font-weight: 700;
+}
+
+@media (max-width:767px){
+	#footer h5 {
+		padding-left: 0;
+		border-left: transparent;
+		padding-bottom: 0px;
+		margin-bottom: 10px;
+	}
+}
+
+
+/* Start custom css footer */
+.footer-widgets {
+	width: 100% !important;
+}
+
+.widget_categories li a {
+	font-size: 1.8rem;
+}
+
+.col-xs-12.col-sm-12.col-md-12.mt-2.mt-sm-2.text-center.text-white {
+	font-size: 1.6rem;
+}
+
+p.h6 {
+	font-size: 1.6rem;
+}
+
+.is-layout-flex {
+	justify-content: center;
+}
+
+.wp-social-link-facebook,.wp-social-link-instagram,.wp-social-link-youtube,.wp-social-link-x,.wp-social-link-tiktok {
+	background-color: transparent;
+}
+
+.widget-content ul li[class*="wp-social-link-"]:hover a {
+	font-size:30px;
+	margin-top:-10px;
+}
+
+.widget-content ul li[class*="wp-social-link-"] a:hover {
+	color: #eeeeee;
+}
+
+.widget-content ul li[class*="wp-social-link-"] a {
+	margin-right: 5px;
+	font-size:25px;
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+}
+
+div.footer-custom ul li::before {
+	content: '\f101';
+	font-family: "FontAwesome";
+	color: #ffffff;
+	font-size: 2rem;
+	font-weight: 300;
+	margin-right: 5px;
+}
+
+div.footer-custom li {
+	font-weight: 300;
+	padding: 3px 0;
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+}
+
+div.footer-custom li:hover {
+	padding: 3px 0;
+	margin-left:5px;
+	font-weight:700;
+}
+
+div.footer-custom li:hover::before {
+	padding: 3px 0;
+	margin-left:5px;
+	font-weight:700;
+}
+
+.widget-content .wp-block-heading {
+	color: #fff;
+}
+
+.widget-content .wp-block-heading::before {
+	content: '';
+	border-left: 3px solid #fff;
+	margin-right: 5px;
+	color: #fff;
+}
+/* End custom css footer */
+
+/* End Footer Custom */
+
+/* Start Post custom */
+
+.post {
+	display: flex;
+	flex-direction: row;
+	border-bottom: 1px solid #e5e7eb;
+	padding: 20px 0;
+	gap: 20px;
+}
+
+/* Cột ảnh đại diện */
+.post-thumbnail {
+	flex-shrink: 0;
+	width: 160px;
+}
+
+.post-thumbnail img {
+	width: 100%;
+	height: auto;
+	border-radius: 6px;
+	object-fit: cover;
+}
+
+/* Cột phải: chứa ngày + nội dung */
+.post-main {
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	flex: 1;
+}
+
+/* Khối ngày tháng */
+.post .post-date {
+	max-width: 100px;
+	text-align: center;
+	border-right: 1px solid #e5e7eb;
+	padding-right: 15px;
+	margin-right: 15px;
+}
+
+.post .post-date .day {
+	font-size: 40px;
+	font-weight: bold;
+	color: #1e3a8a;
+	line-height: 1;
+}
+
+.post .post-date .month {
+	text-transform: uppercase;
+	font-size: 13px;
+	color: #6b7280;
+	display: block;
+	margin-top: 5px;
+}
+
+.post .post-date .year {
+	font-size: 14px;
+	color: #2563eb;
+	font-weight: 500;
+}
+
+/* Nội dung */
+.post .post-content {
+	flex: 1;
+}
+
+.post .post-title {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0 0 10px 0;
+}
+
+.post .post-title a {
+	color: #111827;
+	text-decoration: none;
+}
+
+.post .post-title a:hover {
+	color: #2563eb;
+}
+
+.post .post-meta {
+	font-size: 14px;
+	color: #4b5563;
+	margin: 0 10px 10px 0;
+}
+
+.post .post-meta .label {
+	font-weight: 600;
+	color: #1f2937;
+	margin-right: 5px;
+}
+
+.post .post-excerpt {
+	font-size: 14px;
+	color: #374151;
+	line-height: 1.5;
+}
+
+.flex-custom {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column;
+}
+
+.single-post {
+	display: block;
+}
+
+.single-post #footer {
+	width: 100%;
+}
+
+.single-thumbnail img {
+	width: 50%;
+	height: auto;
+	border-radius: 6px;
+	margin-bottom: 20px;
+}
+
+.single-thumbnail {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.single-post .post-title {
+	font-size: 32px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.single-post .post-date {
+	font-size: 14px;
+	color: #6b7280;
+	margin-bottom: 15px;
+}
+
+.single-post .post-meta {
+	font-size: 13px;
+	color: #999;
+	margin-bottom: 20px;
+}
+
+.single-post .entry-content {
+	font-size: 16px;
+	line-height: 1.7;
+	color: #333;
+}
+
+/* End Post custom */
 
 /* Screen Reader Text ------------------------ */
-/* Áp dụng cho link menu trong footer widget */
-.footer-widgets-wrapper .widget_nav_menu ul li a {
-	display: inline-block;
-	color: #fff;                /* màu chữ */
-	font-weight: normal;        /* bình thường trước hover */
-	text-decoration: none;
-	transition: all 0.3s ease;  /* tạo hiệu ứng trượt + in đậm */
-}
-
-/* Khi hover vào link */
-.footer-widgets-wrapper .widget_nav_menu ul li a:hover {
-	transform: translateX(5px); /* trượt sang phải 5px */
-	font-weight: bold;          /* in đậm chữ */
-	color: #fff;                /* có thể đổi màu khi hover */
-}
 
 .screen-reader-text {
 	border: 0;
@@ -4365,6 +4668,8 @@ div.comment:first-of-type {
 	color: #6d6d6d;
 	margin: 0.3rem 0;
 }
+
+
 
 .widget_archive li li,
 .widget_categories li li,

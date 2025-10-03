@@ -254,6 +254,11 @@ add_action( 'init', 'twentytwenty_register_block_patterns' );
  * @since Twenty Twenty 1.0
  * @since Twenty Twenty 2.6 Enqueue the CSS file for the variable font.
  */
+function mytheme_enqueue_styles() {
+    wp_enqueue_style( 'my-style', get_stylesheet_uri() );
+}
+add_action( 'wp_enqueue_scripts', 'mytheme_enqueue_styles' );
+
 function twentytwenty_register_styles() {
 
 	$theme_version = wp_get_theme()->get( 'Version' );
