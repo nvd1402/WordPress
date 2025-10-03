@@ -280,6 +280,32 @@ function twentytwenty_register_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'twentytwenty_register_styles' );
+function child_theme_customize_register( $wp_customize ) {
+
+    // Footer Background Color
+    $wp_customize->add_setting( 'footer_bg_color', array(
+        'default'   => '#283593',
+        'transport' => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'footer_bg_color', array(
+        'label'    => __( 'Footer Background Color', 'twentytwenty-child' ),
+        'section'  => 'colors',
+        'settings' => 'footer_bg_color',
+    ) ) );
+
+}
+add_action( 'customize_register', 'child_theme_customize_register' );
+function child_theme_customizer_css() {
+    ?>
+    <style type="text/css">
+        #site-footer {
+            background-color: <?php echo get_theme_mod( 'footer_bg_color', '#283593' ); ?>;
+        }
+    </style>
+    <?php
+}
+add_action( 'wp_head', 'child_theme_customizer_css' );
 
 /**
  * Register and Enqueue Scripts.
