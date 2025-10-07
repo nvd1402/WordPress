@@ -295,86 +295,6 @@ header, .site-header, .header-footer-group {
 
 /*	0. CSS Reset
 /* -------------------------------------------------------------------------- */
-/* ==== Layout bài viết dạng danh sách ==== */
-
-/* Bố cục 2 cột */
-article.post-item .post-inner {
-	display: grid;
-	grid-template-columns: 100px 1fr;
-	gap: 15px;
-	align-items: flex-start;
-	padding: 20px 0;
-	border-bottom: none;
-	position: relative;
-}
-
-/* Thanh dọc duy nhất giữa 2 cột */
-article.post-item .post-inner::after {
-	content: "";
-	position: absolute;
-	top: 5px;        /* dư trên */
-	bottom: 5px;     /* dư dưới */
-	left: 100px;     /* đúng vị trí cột ngày */
-	width: 2px;
-	background: #999; /* màu thanh dọc */
-}
-
-/* ===== Cột ngày ===== */
-article.post-item .post-date {
-	text-align: center;
-	min-width: 80px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 5px 10px;
-
-	border-right: none; /* bỏ border thừa */
-}
-
-article.post-item .post-date .day {
-	font-size: 28px;
-	font-weight: bold;
-	color: #333;
-	line-height: 1.2;
-}
-
-article.post-item .post-date .month {
-	font-size: 12px;
-	text-transform: uppercase;
-	color: #666;
-	margin-top: 5px;
-}
-
-/* ===== Nội dung ===== */
-article.post-item .post-content {
-	padding-left: 20px;
-	max-width: 60%;
-
-}
-
-article.post-item .post-title {
-	font-size: 16px;
-	font-weight: bold;
-	margin-bottom: 5px;
-	color: #0056a6;
-	margin-top: 0; /* căn thẳng hàng với ngày */
-}
-
-article.post-item .post-title a {
-	text-decoration: none;
-	color: inherit;
-}
-
-article.post-item .post-title a:hover {
-	color: #003d73;
-	text-decoration: underline;
-}
-
-article.post-item .post-excerpt {
-	font-size: 14px;
-	color: #444;
-	line-height: 1.5;
-}
 
 
 
@@ -7168,3 +7088,272 @@ a.to-the-top > * {
 		width: calc(100% - 8rem);
 	}
 }
+/* ===========================
+   MODERN SEARCH FORM (No border until focus)
+   =========================== */
+
+.search-form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+	background: #fff;
+	border-radius: 6px;
+	padding: 8px 12px;
+	box-shadow: 0 0 4px rgba(0,0,0,0.05);
+	border: 1px solid #e0e0e0;
+	transition: border-color 0.3s ease;
+}
+
+/* Icon kính lúp */
+.search-form::before {
+	content: "\f002";
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	font-size: 18px;
+	color: #666;
+	margin-right: 6px;
+	transition: color 0.3s ease;
+}
+
+/* Ô nhập tìm kiếm */
+.search-form .search-field {
+	flex: 1;
+	border: none;
+	outline: none;
+	padding: 8px 10px;
+	font-size: 15px;
+	color: #333;
+	background: transparent;
+	border-bottom: 2px solid transparent;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Placeholder */
+.search-form .search-field::placeholder {
+	color: #999;
+}
+
+/* Hover hoặc Focus */
+.search-form .search-field:hover,
+.search-form .search-field:focus {
+	border-color: #28a745;
+	box-shadow: 0 2px 4px rgba(40, 167, 69, 0.1);
+}
+
+.search-form:focus-within::before {
+	color: #28a745; /* đổi màu icon khi nhập */
+}
+
+/* Nút Search */
+.search-form .search-submit {
+	background-color: #28a745;
+	color: #fff;
+	border: none;
+	padding: 8px 18px;
+	border-radius: 4px;
+	font-weight: 600;
+	font-size: 15px;
+	cursor: pointer;
+	text-transform: uppercase;
+	transition: background-color 0.25s ease, transform 0.1s ease;
+}
+
+.search-form .search-submit:hover {
+	background-color: #218838;
+	transform: translateY(-1px);
+}
+
+/* Responsive mobile */
+@media (max-width: 600px) {
+	.search-form {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 8px;
+	}
+	.search-form::before {
+		display: none;
+	}
+	.search-form .search-submit {
+		width: 100%;
+	}
+}
+.archive-header{
+	background-color: #FFFFFF !important;
+	border-bottom: none !important;
+}
+.archive-header .archive-title,
+.archive-header .archive-subtitle {
+	color: #000 !important;
+}
+
+.color-accent{
+	color: #d54563 !important;
+}
+/* ===============================
+   CARD BÀI VIẾT - TIÊU ĐỀ SÁT LỀ TRÁI
+   =============================== */
+.news-card {
+	display: flex;
+	align-items: stretch;
+	background: #fff;
+	overflow: hidden;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+	margin: 25px auto;
+	max-width: 1100px;
+	min-height: 200px;
+	transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.news-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+/* ẢNH TRÁI SÁT VIỀN */
+.news-thumb {
+	flex: 0 0 38%;
+	max-width: 38%;
+}
+
+.news-thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+/* NGÀY THÁNG TRÊN CÙNG */
+.news-date {
+	flex: 0 0 130px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	padding-top: 30px;
+	position: relative;
+	background: #fff;
+}
+
+/*!* ĐƯỜNG LINE DỌC – DÀI HƠN TIÊU ĐỀ & MÔ TẢ MỘT CHÚT *!*/
+/*.news-date::after {*/
+/*	content: "";*/
+/*	position: absolute;*/
+/*	right: 0;*/
+/*	top: 10%;        !* cách đỉnh card khoảng 10% *!*/
+/*	bottom: 10%;     !* cách đáy card khoảng 10% *!*/
+/*	width: 1.5px;*/
+/*	background-color: #ccc;*/
+/*}*/
+
+.news-content {
+	position: relative;
+}
+
+.news-text {
+	position: relative;
+	display: inline-block; /* Giúp giới hạn chiều cao theo text thực tế */
+	padding-top: 15px; /* tạo khoảng cách top 30px */
+	padding-bottom: 15px; /* tạo khoảng cách bottom 30px */
+}
+
+.news-text::before {
+	content: "";
+	position: absolute;
+	left: -20px;       /* điều chỉnh khoảng cách giữa ngày và line */
+	top: 0;            /* line bắt đầu ngay đầu text (đã có padding 30px sẵn) */
+	bottom: 0;         /* kết thúc cuối text (đã có padding 30px sẵn) */
+	width: 1.5px;
+	background-color: #ccc;
+}
+
+
+
+
+/* NGÀY / THÁNG */
+.news-date .day {
+	font-size: 50px;
+	font-weight: 500;
+	font-family:"Dosis";
+	color: #000;
+	line-height: 1;
+}
+
+.news-date .month {
+	font-size: 12px;
+	color: #777;
+	text-transform: uppercase;
+	margin-top: 4px;
+}
+
+/* NỘI DUNG PHẢI */
+.news-content {
+	flex: 1;
+	padding: 18px 30px 22px 20px; /* giảm padding-left để sát line hơn */
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+/* TIÊU ĐỀ SÁT LỀ TRÁI */
+.news-title {
+	font-size: 18px;
+	font-weight: 700;
+	color: #428ccb;
+	margin-bottom: 8px;
+	line-height: 1.3;
+	margin-top: 2px; /* ngang hàng với đầu ngày */
+	margin-left: 0;
+	text-transform: uppercase;
+}
+
+.news-title a {
+	color: #428ccb;
+	text-decoration: none;
+	display: inline-block;
+	padding-left: 0; /* loại bỏ khoảng cách thụt vào */
+	transition: color 0.2s ease;
+}
+
+.news-title a:hover {
+	color: #007bff;
+}
+
+/* MÔ TẢ – CĂN CÙNG TIÊU ĐỀ */
+.news-excerpt {
+	font-size: 15px;
+	color: #444;
+	line-height: 1.6;
+	margin-top: 4px;
+}
+
+/* HIỆU ỨNG HOVER */
+.news-card:hover .news-date::after {
+	background-color: #007bff44;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+	.news-card {
+		flex-direction: column;
+		max-width: 95%;
+	}
+	.news-thumb {
+		max-width: 100%;
+	}
+	.news-date {
+		flex-direction: row;
+		justify-content: flex-start;
+		padding: 10px 15px;
+	}
+	.news-date::after {
+		display: none;
+	}
+}
+
+
+

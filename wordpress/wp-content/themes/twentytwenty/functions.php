@@ -49,6 +49,11 @@ function custom_enqueue_fontawesome() {
     );
 }
 add_action('wp_enqueue_scripts', 'custom_enqueue_fontawesome');
+//Search
+function theme_enqueue_icons() {
+    wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css', array(), '6.5.0' );
+}
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_icons' );
 
 
 //END

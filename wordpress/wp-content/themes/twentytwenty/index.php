@@ -94,19 +94,15 @@ get_header();
 	} elseif ( is_search() ) {
 		?>
 
-		<div class="no-search-results-form section-inner thin">
+        <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
+            <label>
+                <input type="search" class="search-field" placeholder="Search topics or keywords" value="<?php echo get_search_query(); ?>" name="s" />
+            </label>
+            <input type="submit" class="search-submit" value="Search" />
+        </form>
 
-			<?php
-			get_search_form(
-				array(
-					'aria_label' => __( 'search again', 'twentytwenty' ),
-				)
-			);
-			?>
 
-		</div><!-- .no-search-results -->
-
-		<?php
+        <?php
 	}
 	?>
 
