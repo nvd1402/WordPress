@@ -47,6 +47,248 @@ with others.
 	17. Media Queries
 
 ----------------------------------------------------------------------------- */
+/* ===================== */
+/* HEADER NHỎ GỌN + BỐ CỤC CHUẨN */
+/* ===================== */
+header, .site-header, .header-footer-group {
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+	background: #f6f8f8; /* nền sáng nhẹ */
+	overflow: visible !important;
+	padding: 8px 0;
+	min-height: 75px;
+	border-bottom: 1px solid #e1e4e4;
+
+}
+
+/* CHIA BỐ CỤC CHÍNH — TRÁI / GIỮA / PHẢI */
+.header-inner.section-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 32px; /* khoảng cách hai bên */
+	gap: 20px;
+}
+
+/* ===================== */
+/* VÙNG TRÁI: LOGO + HOME */
+/* ===================== */
+.header-left {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.header-titles a,
+.header-titles span {
+	font-size: 22px;
+	font-weight: 600;
+	text-decoration: none;
+	color: #666 !important;
+}
+
+.header-left .menu-item a {
+	font-size: 10px;
+	color: #666;
+	text-decoration: none;
+	padding: 8px 10px;
+	transition: background 0.25s, color 0.25s;
+
+}
+
+.header-left .menu-item a:hover {
+	background: #e8ecec;
+	border-radius: 4px;
+	color: #000;
+}
+
+/* ===================== */
+/* VÙNG GIỮA: SEARCH */
+/* ===================== */
+.header-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: 1; /* canh giữa */
+}
+
+.custom-header-search {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.custom-search-field {
+	height: 36px;
+	font-size: 14px;
+	padding: 6px 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	width: 260px;
+	transition: border-color 0.3s;
+}
+
+.custom-search-field:focus {
+	border-color: #999;
+	outline: none;
+}
+
+.custom-search-submit {
+	height: 36px;
+	font-size: 14px;
+	padding: 0 14px;
+	border: 1px solid #ccc;
+	background: #fff;
+	border-radius: 4px;
+	cursor: pointer;
+	color: #444;
+	transition: background 0.25s, color 0.25s;
+}
+
+.custom-search-submit:hover {
+	background: #e8ecec;
+	color: #000;
+}
+
+/* ===================== */
+/* VÙNG PHẢI: MENU, SEARCH ICON, ACCOUNT */
+/* ===================== */
+.header-right {
+	display: flex;
+	align-items: center;
+	gap: 25px;
+}
+
+/* ICON MENU & SEARCH */
+.header-right .toggle-inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 12px;
+	color: #666;
+}
+
+.header-right .toggle-inner svg {
+	width: 20px;
+	height: 20px;
+	fill: #666;
+	transition: fill 0.25s;
+}
+
+.header-right .toggle-inner:hover svg {
+	fill: #000;
+}
+
+.header-right .toggle-inner:hover {
+	color: #000;
+}
+
+/* ===================== */
+/* ACCOUNT DROPDOWN */
+/* ===================== */
+.account-icon {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.account-layout {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	user-select: none;
+}
+
+.account-icon-svg {
+	width: 28px;
+	height: 28px;
+	fill: #666;
+	transition: fill 0.25s ease;
+}
+
+.account-text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+}
+
+.account-label {
+	font-size: 14px;
+	color: #666;
+	transition: color 0.25s ease;
+}
+
+/* Mũi tên phải */
+.caret-icon {
+	width: 9px;
+	height: 9px;
+	transform: rotate(0deg);
+	transition: transform 0.25s ease, fill 0.25s ease;
+	fill: #666;
+}
+
+/* Hover đổi màu */
+.account-icon:hover .account-icon-svg {
+	fill: #000;
+}
+
+.account-icon:hover .account-label {
+	color: #000;
+}
+
+.account-icon:hover .caret-icon {
+	transform: rotate(180deg);
+	fill: #000;
+}
+
+/* ===================== */
+/* DROPDOWN MENU */
+/* ===================== */
+.account-dropdown {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%) translateY(8px);
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+	padding: 8px 0;
+	min-width: 140px;
+	z-index: 2000;
+	transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* Hover hiển thị menu */
+.account-icon:hover .account-dropdown,
+.account-icon .account-dropdown:hover {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+	transform: translateX(-50%) translateY(0);
+}
+
+/* Menu item */
+.account-dropdown a {
+	display: block;
+	padding: 8px 18px;
+	color: #444;
+	text-decoration: none;
+	font-size: 14px;
+	transition: background 0.2s ease, color 0.2s ease;
+}
+
+.account-dropdown a:hover {
+	background: #f0f0f0;
+	color: #000;
+}
 
 
 /* -------------------------------------------------------------------------- */
@@ -54,84 +296,6 @@ with others.
 /*	0. CSS Reset
 /* -------------------------------------------------------------------------- */
 /* ==== Layout bài viết dạng danh sách ==== */
-/* Account icon */
-.account-icon {
-	position: relative;
-	display: inline-block;
-}
-
-.account-icon .dropdown-toggle {
-	display: flex;
-	align-items: center;
-	text-decoration: none;
-	color: #333;
-}
-
-.account-icon .account-svg {
-	margin-right: 5px;
-}
-
-.account-icon .dropdown-menu {
-	display: none;
-	position: absolute;
-	top: 100%;  /* xổ xuống dưới icon */
-	right: 0;
-	background: #fff;
-	border: 1px solid #ddd;
-	border-radius: 4px;
-	list-style: none;
-	padding: 5px 0;
-	margin: 5px 0 0 0;
-	min-width: 120px;
-	z-index: 9999;
-}
-
-.account-icon .dropdown-menu li {
-	padding: 5px 15px;
-}
-
-.account-icon .dropdown-menu li a {
-	text-decoration: none;
-	color: #333;
-	display: block;
-}
-
-.account-icon .dropdown-menu li a:hover {
-	background: #f5f5f5;
-}
-
-/* Hiện dropdown khi hover */
-.account-icon:hover .dropdown-menu {
-	display: block;
-}
-/* Account Icon bố cục dọc */
-.account-icon {
-	position: relative;
-	display: flex;
-	flex-direction: column; /* xếp dọc */
-	align-items: center;    /* căn giữa icon và chữ */
-	text-align: center;
-	margin-left: 10px;
-}
-
-.account-icon .dropdown-toggle {
-	display: flex;
-	flex-direction: column; /* icon trên, chữ dưới */
-	align-items: center;
-	text-decoration: none;
-	color: #333;
-}
-
-.account-icon .account-svg {
-	margin: 0 auto; /* căn giữa icon */
-	display: block;
-}
-
-.account-icon .account-label {
-	font-size: 13px;
-	margin-top: 2px; /* khoảng cách giữa icon và chữ */
-	display: block;
-}
 
 /* Bố cục 2 cột */
 article.post-item .post-inner {
@@ -1623,15 +1787,12 @@ ul.social-icons li {
 	background-color: #e4eae9 !important;
 }
 
-/* Footer riêng */
-#site-footer.color-footer {
-	background-color: #283593 !important;
-}
+
 /* Đổi màu chữ trong header */
 #site-header.color-header,
 #site-header.color-header a,
 #site-header.color-header .primary-menu a {
-	color: #222 !important;   /* màu chữ (đen xám) */
+	color: #666 !important;   /* màu chữ (đen xám) */
 }
 
 /* Đổi màu chữ khi hover */
@@ -1639,11 +1800,7 @@ ul.social-icons li {
 	color: #0073aa !important;  /* xanh WP */
 }
 
-/* Đổi màu chữ của site title/logo */
-#site-header.color-header .site-title a {
-	color: #000 !important;
-	font-weight: 700;
-}
+
 
 /* Đổi màu chữ của site description */
 #site-header.color-header .site-description {
@@ -1700,25 +1857,7 @@ ul.social-icons li {
 	border-color: #0073aa;
 }
 
-/* Account Icon */
-.account-icon {
-	margin-left: 20px;
-	display: flex;
-	align-items: center;
-}
 
-.account-icon a {
-	display: flex;
-	align-items: center;
-	gap: 6px;
-	text-decoration: none;
-	font-weight: 500;
-}
-
-.account-icon-svg {
-	width: 24px;
-	height: 24px;
-}
 /* Nhóm Search */
 .custom-header-search {
 	display: flex;

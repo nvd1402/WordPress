@@ -33,6 +33,25 @@
  *
  * @since Twenty Twenty 1.0
  */
+//Header CMS
+function custom_enqueue_bootstrap_header() {
+    wp_enqueue_style('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css');
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js', array('jquery'), null, true);
+}
+add_action('wp_enqueue_scripts', 'custom_enqueue_bootstrap_header');
+function custom_enqueue_fontawesome() {
+    wp_enqueue_style(
+        'font-awesome-6',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.8.2/css/all.min.css',
+        array(),
+        '6.8.2'
+    );
+}
+add_action('wp_enqueue_scripts', 'custom_enqueue_fontawesome');
+
+
+//END
 function twentytwenty_theme_support() {
 
 	// Add default posts and comments RSS feed links to head.
@@ -152,13 +171,7 @@ function my_footer_widget_menu_icons( $item_output, $item, $args ) {
 
     return $item_output;
 }
-function add_fontawesome() {
-    wp_enqueue_style(
-        'fontawesome',
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'
-    );
-}
-add_action('wp_enqueue_scripts','add_fontawesome');
+
 
 add_filter( 'walker_nav_menu_start_el', 'my_footer_widget_menu_icons', 10, 3 );
 // Thêm icon trước mỗi link trong Footer widgets menu
@@ -176,7 +189,7 @@ add_action( 'after_setup_theme', 'twentytwenty_theme_support' );
 
 function footertheme_enqueue_scripts() {
     wp_enqueue_style('bootstrap4', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
-    wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+//    wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
     wp_enqueue_script('jquery');
     wp_enqueue_script('bootstrap4', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array('jquery'), null, true);

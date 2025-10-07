@@ -17,6 +17,7 @@
     <?php wp_head(); ?>
 </head>
 
+
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
@@ -92,28 +93,42 @@
                 </div>
 
                 <!-- Account Icon với Dropdown -->
-                <div class="account-icon dropdown">
-                    <a href="#" class="dropdown-toggle">
-                    <span class="account-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="account-icon-svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                            <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5
-                                     2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10
-                                     5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+                <div class="account-icon">
+                    <div class="account-layout">
+                        <!-- Icon user -->
+                        <svg xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 0 512 512" fill="#666" class="account-icon-svg">
+                            <path d="M256 256a128 128 0 1 0 0-256 128 128 0 1 0 0 256zM0 512a256 256 0 1 1 512 0H0z"/>
                         </svg>
-                    </span>
-                        <span class="account-label">Account</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <?php if ( is_user_logged_in() ) : ?>
-                                        <li><a href="<?php echo esc_url( get_edit_user_link() ); ?>">Account</a></li>
-                                        <li><a href="<?php echo esc_url( wp_logout_url() ); ?>">Logout</a></li>
-                                    <?php else : ?>
-                                        <li><a href="<?php echo esc_url( wp_login_url() ); ?>">Login</a></li>
-                                    <?php endif; ?>
-                                </ul>
 
+                        <!-- Label + caret -->
+                        <div class="account-text">
+            <span class="account-label">
+                <?php
+                if ( is_user_logged_in() ) {
+                    $current_user = wp_get_current_user();
+                    echo esc_html( $current_user->display_name ?: 'Account' );
+                } else {
+                    echo 'Account';
+                }
+                ?>
+            </span>
+                            <svg class="caret-icon" xmlns="http://www.w3.org/2000/svg" height="10" viewBox="0 0 320 512" fill="#666">
+                                <path d="M31.5 192h257c28.4 0 42.8 34.5 22.6 54.6l-128.5 128c-12.5 12.5-32.8 12.5-45.3 0l-128.5-128C-11.3 226.5 3.1 192 31.5 192z"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- ⚡ Đổi class ở đây để tránh bị ẩn -->
+                    <ul class="account-dropdown">
+                        <?php if ( is_user_logged_in() ) : ?>
+                            <li><a href="<?php echo esc_url( get_edit_user_link() ); ?>">Profile</a></li>
+                            <li><a href="<?php echo esc_url( wp_logout_url( home_url() ) ); ?>">Logout</a></li>
+                        <?php else : ?>
+                            <li><a href="<?php echo esc_url( wp_login_url() ); ?>">Login</a></li>
+                            <li><a href="<?php echo esc_url( wp_registration_url() ); ?>">Register</a></li>
+                        <?php endif; ?>
+                    </ul>
                 </div>
-
 
             </div><!-- .header-toggles -->
         </div><!-- .header-navigation-wrapper -->
