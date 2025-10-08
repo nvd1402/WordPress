@@ -7354,6 +7354,103 @@ a.to-the-top > * {
 		display: none;
 	}
 }
+/* ===========================
+   TRANG CHI TIẾT (SINGLE)
+   =========================== */
+body.single .single-post {
+	max-width: 1000px;
+	margin: 50px auto;
+	background: #fff;
+	padding: 40px;
+	border-radius: 10px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	position: relative;
+}
 
+/* Ảnh đại diện */
+body.single .single-thumbnail img {
+	width: 100%;
+	border-radius: 10px;
+	margin-bottom: 25px;
+}
 
+/* --- TIÊU ĐỀ + NGÀY THÁNG NĂM --- */
+body.single .post-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between; /* tiêu đề bên trái, vòng tròn bên phải */
+	margin-bottom: 25px;
+	position: relative;
+}
+
+/* Tiêu đề bài viết */
+body.single .post-title {
+	font-size: 28px;
+	color: #000000;
+	line-height: 1.4;
+	margin: 0;
+	max-width: 85%; /* để chừa chỗ bên phải cho vòng tròn */
+}
+
+/* Nội dung bài viết */
+body.single .entry-content p {
+	line-height: 1.8;
+	font-size: 17px;
+	color: #333;
+	margin-left: inherit;
+	max-width: 100% !important;
+
+}
+
+/* ===========================
+   VÒNG TRÒN NGÀY / THÁNG / NĂM
+   =========================== */
+.date-circle {
+	width: 75px;
+	height: 75px;
+	background-color: #f7d437; /* vàng */
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	font-family: "Arial", sans-serif;
+	color: #1d1d1d;
+	font-weight: bold;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+	flex-shrink: 0;
+}
+
+/* Cột trái: Ngày và Tháng */
+.date-circle .date-left {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	line-height: 1;
+}
+
+/* Ngày */
+.date-circle .day {
+	font-size: 15px;
+}
+
+/* Gạch chia giữa ngày và tháng */
+.date-circle .divider {
+	width: 18px;
+	height: 2px;
+	background-color: #333;
+	margin: 2px 0;
+	border-radius: 2px;
+}
+
+/* Tháng */
+.date-circle .month {
+	font-size: 15px;
+}
+
+/* Năm bên phải */
+.date-circle .year {
+	font-size: 15px;
+	margin-top: 2px;
+}
 

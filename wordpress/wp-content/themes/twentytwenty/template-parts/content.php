@@ -14,26 +14,30 @@ if ( is_single() ) { ?>
             </div>
         <?php endif; ?>
 
-        <!-- Ngày đăng -->
-        <div class="flex-custom">
-            <div class="post-date">
-                <div class="day"><?php echo get_the_date('d'); ?></div>
-                <span class="month">Tháng <?php echo get_the_date('m'); ?></span>
-                <span class="year"><?php echo get_the_date('Y'); ?></span>
-            </div>
-        </div>
+
 
         <!-- Nội dung -->
         <div class="post-content">
-            <h1 class="post-title"><?php the_title(); ?></h1>
-            <div class="post-meta">
-                <span class="author"><?php the_author(); ?></span> |
-                <span class="categories"><?php the_category(', '); ?></span>
+
+            <!-- Gộp tiêu đề + vòng ngày vào chung -->
+            <div class="post-header">
+                <h1 class="post-title"><?php the_title(); ?></h1>
+                <div class="date-circle">
+                    <div class="date-left">
+                        <div class="day"><?php echo get_the_date('d'); ?></div>
+                        <div class="divider"></div>
+                        <div class="month"><?php echo get_the_date('m'); ?></div>
+                    </div>
+                    <div class="year"><?php echo get_the_date('y'); ?></div>
+                </div>
             </div>
+
             <div class="entry-content">
                 <?php the_content(__('Continue reading', 'twentytwenty')); ?>
             </div>
+
         </div>
+
 
     </article>
 <?php } else { ?>
@@ -42,14 +46,13 @@ if ( is_single() ) { ?>
 
         <div class="news-card">
             <!-- Ảnh đại diện -->
-            <?php if ( has_post_thumbnail() ) : ?>
+            <?php if ( is_search() ) : ?>
                 <div class="news-thumb">
                     <a href="<?php the_permalink(); ?>">
                         <?php the_post_thumbnail('medium_large'); ?>
                     </a>
                 </div>
             <?php endif; ?>
-
             <!-- Cột ngày tháng -->
             <div class="news-date">
                 <div class="day"><?php echo get_the_date('d'); ?></div>
@@ -63,7 +66,7 @@ if ( is_single() ) { ?>
                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                 </h2>
                 <div class="news-excerpt">
-                    <?php echo wp_trim_words(get_the_excerpt(), 50, '[...]'); ?>
+                    <?php echo wp_trim_words(get_the_excerpt(), 50, ' [...]'); ?>
                 </div>
             </div>
             </div>
