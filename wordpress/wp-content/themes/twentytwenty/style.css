@@ -7453,4 +7453,26 @@ body.single .entry-content p {
 	font-size: 15px;
 	margin-top: 2px;
 }
+.line-divider {
+	position: relative;
+	width: 100%;
+	height: 2px;
+	background: #e0e0e0; /* màu line xám nhạt */
+	margin: 40px 0;
+	box-shadow: 0 1px 0 #f9f9f9; /* tạo hiệu ứng nổi nhẹ */
+}
+
+.line-divider::after {
+	content: "";
+	position: absolute;
+	left: 20%;
+	top: -15px;
+	transform: translateX(-50%) rotate(-45deg);
+	width: 30px;
+	height: 30px;
+	background: #fff; /* màu nền trang (để mũi hòa vào line) */
+	border-left: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
 
