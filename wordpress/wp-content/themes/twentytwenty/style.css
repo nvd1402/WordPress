@@ -7496,44 +7496,88 @@ body.single .entry-content p {
 	color: #0056b3;
 }
 
-/* === DATE VERTICAL STYLE === */
-.nav-date-vertical {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	font-family: "Times New Roman", serif;
-	color: #333;
-	font-weight: 500;
-	line-height: 1.1;
-	text-align: center;
+/* ===== NAV LIST ===== */
+.post-navigation-custom{
+	display:flex;
+	flex-direction:column;
+	gap:26px;
+	margin:18px 0 32px;
 }
 
-.nav-date-vertical .day {
-	font-size: 15px;
+.post-navigation-custom .nav-item{
+	display:flex;
+	align-items:flex-start;
+	gap:18px;
+	text-decoration:none;
+	color:#222;
 }
 
-.nav-date-vertical .divider {
-	width: 18px;
-	height: 2px;
-	background-color: #333;
-	margin: 2px 0;
-	border-radius: 2px;
+/* ===== DATE: 03/08 — 18 ===== */
+.nav-date-vertical{
+	/* 3 cột: [ngày/tháng] [khoảng trống nhỏ] [năm] */
+	display:grid;
+	grid-template-columns: 26px 10px 20px;
+	/* 3 hàng: ngày / gạch / tháng */
+	grid-template-rows: auto 2px auto;
+	align-items:center;
+	line-height:1.1;
+	color:#333;
+	font-family:"Times New Roman", serif;
 }
 
-.nav-date-vertical .month-year {
-	display: flex;
-	align-items: flex-start; /* đẩy năm cao hơn một chút */
-	gap: 2px;
+/* Ngày (hàng 1, cột 1) */
+.nav-date-vertical .day{
+	grid-column:1;
+	grid-row:1;
+	justify-self:center;
+	font-size:18px;
 }
 
-.nav-date-vertical .month {
-	font-size: 15px;
+/* Gạch ngang giữa ngày & tháng (hàng 2, cột 1) */
+.nav-date-vertical .divider{
+	grid-column:1;
+	grid-row:2;
+	width:18px;
+	height:1px;
+	background:#333;
+	border-radius:1px;
+	justify-self:center;
 }
 
-.nav-date-vertical .year {
-	font-size: 15px;
-	margin-top: 2px;
+/* Cho phép .month và .year trở thành item trực tiếp của grid */
+.nav-date-vertical .month-year{
+	display: contents;
 }
+
+/* Tháng (hàng 3, cột 1) */
+.nav-date-vertical .month{
+	grid-column:1;
+	grid-row:3;
+	justify-self:center;
+	font-size:18px;
+}
+
+/* Năm (chiếm cột 3, căn giữa theo chiều dọc) */
+.nav-date-vertical .year{
+	grid-column:3;
+	grid-row:1 / span 3;
+	align-self:center;
+	justify-self:start;
+	font-size:18px;
+}
+
+/* Tiêu đề bên phải */
+.nav-title{
+	font-size:15px;
+	line-height:1.45;
+	color:#222;
+	margin-top: 5px;
+	margin-left: 100px;
+}
+
+.nav-item:hover .nav-title{ color:#0056b3; }
+.nav-item:hover .divider{ background:#0056b3; }
+
 
 
 
