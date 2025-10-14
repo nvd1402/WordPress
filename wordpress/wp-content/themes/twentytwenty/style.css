@@ -7602,7 +7602,69 @@ body.single .entry-content p {
 	padding: 10px;
 	margin-top: -60px !important;
 }
+/*show comment*/
+/* Container tổng của khối bình luận */
+.comments-area {
+	margin: 2rem 0;
+	font-family: "Segoe UI", Arial, sans-serif;
+}
 
+/* Tiêu đề Comments */
+.comments-title {
+	font-size: 28px;
+	font-weight: 600;
+	color: #3a3a3a;
+	padding-bottom: 4px;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+/* Thanh gạch nhỏ màu xám dưới chữ Comments */
+.comments-title::after {
+	content: "";
+	position: absolute;
+	bottom: -1px;
+	left: 0;
+	width: 100px;
+	height: 2px;
+	background-color: #b5b5b5;
+}
+
+/* Danh sách comment */
+.comments-list {
+	margin-top: 1rem;
+	font-size: 20px;
+	margin-left: 20px !important;
+}
+
+/* Từng comment 1 hàng */
+.comment-item{
+	border-bottom: 1px solid #f1f1f1;
+	padding: 6px 0;
+
+}
+
+/* Link comment */
+.comment-item a {
+	color: #0986ea;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+
+/* Tiêu đề bài viết trong phần comments */
+.post-comments-title {
+	font-size: 3rem;          /* nhỏ hơn mặc định */
+	font-weight: 600;
+	color: #222;
+	text-align: left;
+	margin-top: 2rem;
+	margin-bottom: 0.75rem;
+	position: relative;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid #ddd; /* gạch chân nhẹ */
+	width: fit-content;           /* chỉ gạch bằng chiều dài chữ */
+}
 
 
 
