@@ -7579,5 +7579,30 @@ body.single .entry-content p {
 .nav-item:hover .divider{ background:#0056b3; }
 
 
+/*Comment*/
+.comment-respond {
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	background-color: #fff;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+	margin: 2rem 0;
+	overflow: hidden; /* Giữ tab nằm trong viền */
+}
+.nav-link{
+	font-size: 20px;
+	text-decoration: none;
+}
+.text-right{
+	padding: 20px;
+}
+.text-right button{
+	background-color: #0986ea !important;
+	text-transform: lowercase !important;
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: -60px !important;
+}
+
+
 
 

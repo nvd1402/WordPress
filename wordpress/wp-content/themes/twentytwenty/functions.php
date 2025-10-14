@@ -33,6 +33,12 @@
  *
  * @since Twenty Twenty 1.0
  */
+function enqueue_bootstrap_theme() {
+    wp_enqueue_style('bootstrap-css', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
+    wp_enqueue_script('bootstrap-js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js', ['jquery'], null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_bootstrap_theme');
+
 //Header CMS
 function custom_enqueue_bootstrap_header() {
     wp_enqueue_style('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css');
