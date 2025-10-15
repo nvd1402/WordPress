@@ -7720,3 +7720,112 @@ body.single .entry-content p {
 .container{
 	max-width: 1500px !important;
 }
+/*Rectp post*/
+.post-latest {
+	display: inline-block; /* giúp nền chỉ bao quanh nội dung thực */
+	background-color: #4ab7bd; /* nền xanh */
+	padding: 0px 30px 10px;
+	color: #fff;
+	font-family: "Dosis";
+	max-width: 100%; /* tránh tràn ra ngoài */
+	box-sizing: border-box;
+	height: fit-content;
+	margin-top: 40px;
+}
+
+.post-latest h3 {
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 25px;
+	color: #fff;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+	display: inline-block;
+	padding-bottom: 5px;
+}
+
+/* danh sách bài viết */
+.latest-posts ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.latest-item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 18px;
+}
+
+.latest-date {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	min-width: 70px;
+	color: #fff;
+	font-weight: 600;
+}
+
+.latest-date .day-month {
+	text-align: center;
+	font-size: 13px;
+	line-height: 1.1;
+}
+
+.latest-date .day,
+.latest-date .month {
+	display: block;
+}
+
+.latest-date .divider {
+	width: 18px;
+	height: 1px;
+	background-color: #fff;
+	border: none;
+	margin: 4px auto;
+}
+
+.latest-date .year {
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.latest-title {
+	margin-left: 20px;
+	flex: 1;
+}
+
+.latest-title a {
+	color: #fff;
+	font-size: 15px;
+	text-decoration: none;
+	line-height: 1.4;
+	transition: opacity 0.3s;
+}
+
+.latest-title a:hover {
+	opacity: 0.8;
+	text-decoration: underline;
+}
+
+/* xem tất cả tin tức */
+.view-all {
+	border-top: 1px solid rgba(255, 255, 255, 0.4);
+	text-align: center;
+	margin-top: 25px;
+	padding-top: 15px;
+}
+
+.view-all a {
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 14px;
+	text-decoration: none;
+	letter-spacing: 0.5px;
+}
+
+.view-all a:hover {
+	text-decoration: underline;
+}
+
+

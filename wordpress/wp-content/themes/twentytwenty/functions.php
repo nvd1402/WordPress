@@ -33,6 +33,81 @@
  *
  * @since Twenty Twenty 1.0
  */
+// AJAX load toàn bộ bài viết
+add_action('wp_ajax_load_all_posts', 'load_all_posts_callback');
+add_action('wp_ajax_nopriv_load_all_posts', 'load_all_posts_callback');
+
+function load_all_posts_callback() {
+    check_ajax_referer('load_more_posts', 'security');
+
+    $recent_posts = wp_get_recent_posts(array(
+        'numberposts' => -1,
+        'post_status' => 'publish'
+    ));
+
+    ob_start();
+    foreach ($recent_posts as $post) : ?>
+        <li class="latest-item">
+            <div class="latest-date">
+                <div class="day-month">
+                    <span class="day"><?php echo get_the_date('d', $post['ID']); ?></span>
+                    <hr class="divider">
+                    <span class="month"><?php echo get_the_date('m', $post['ID']); ?></span>
+                </div>
+                <span class="year"><?php echo get_the_date('y', $post['ID']); ?></span>
+            </div>
+            <div class="latest-title">
+                <a href="<?php echo get_permalink($post['ID']); ?>">
+                    <?php echo esc_html($post['post_title']); ?>
+                </a>
+            </div>
+        </li>
+    <?php endforeach;
+
+    echo ob_get_clean();
+    wp_die();
+}
+
+// AJAX nạp lại 3 bài đầu (dùng cho nút "Thu gọn")
+add_action('wp_ajax_load_recent_posts', 'load_recent_posts_callback');
+add_action('wp_ajax_nopriv_load_recent_posts', 'load_recent_posts_callback');
+
+function load_recent_posts_callback() {
+    check_ajax_referer('load_more_posts', 'security');
+
+    $recent_posts = wp_get_recent_posts(array(
+        'numberposts' => 3,
+        'post_status' => 'publish'
+    ));
+
+    ob_start();
+    foreach ($recent_posts as $post) : ?>
+        <li class="latest-item">
+            <div class="latest-date">
+                <div class="day-month">
+                    <span class="day"><?php echo get_the_date('d', $post['ID']); ?></span>
+                    <hr class="divider">
+                    <span class="month"><?php echo get_the_date('m', $post['ID']); ?></span>
+                </div>
+                <span class="year"><?php echo get_the_date('y', $post['ID']); ?></span>
+            </div>
+            <div class="latest-title">
+                <a href="<?php echo get_permalink($post['ID']); ?>">
+                    <?php echo esc_html($post['post_title']); ?>
+                </a>
+            </div>
+        </li>
+    <?php endforeach;
+
+    echo ob_get_clean();
+    wp_die();
+}
+
+add_action('wp_head', function() {
+    echo '<script>var ajaxurl = "' . admin_url('admin-ajax.php') . '";</script>';
+});
+
+
 function enqueue_bootstrap_theme() {
     wp_enqueue_style('bootstrap-css', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
     wp_enqueue_script('bootstrap-js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js', ['jquery'], null, true);
