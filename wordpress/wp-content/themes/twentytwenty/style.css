@@ -7354,17 +7354,13 @@ a.to-the-top > * {
 		display: none;
 	}
 }
+
 /* ===========================
    TRANG CHI TIẾT (SINGLE)
    =========================== */
 body.single .single-post {
-	max-width: 1000px;
-	margin: 50px auto;
-	background: #fff;
+	top: 0;
 	padding: 40px;
-	border-radius: 10px;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-	position: relative;
 }
 
 /* Ảnh đại diện */
@@ -7666,5 +7662,61 @@ body.single .entry-content p {
 	width: fit-content;           /* chỉ gạch bằng chiều dài chữ */
 }
 
+/*Categories*/
+/* ==== Categories Section ==== */
+.post-categories {
+	padding: 15px 20px;
+	margin-top: 1rem;
+}
 
+.post-categories h3 {
+	font-size: 18px;
+	font-weight: 700;
+	color: #333;
+	margin-bottom: 10px;
+}
 
+.post-categories ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.post-categories li {
+	position: relative;
+	padding-left: 20px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 8px;
+}
+
+.post-categories li:last-child {
+	border-bottom: none;
+}
+
+/* Chấm vàng bên trái */
+.post-categories li::before {
+	content: "•";
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #f9c500;
+	font-size: 22px;
+	line-height: 1;
+}
+
+/* Link chuyên mục */
+.post-category {
+	text-decoration: none;
+	color: #3182bd;
+	font-size: 15px;
+	font-weight: 500;
+}
+
+.post-category:hover {
+	color: #0056b3;
+	text-decoration: underline;
+}
+.container{
+	max-width: 1500px !important;
+}
