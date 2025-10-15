@@ -1,0 +1,41 @@
+/* nền footer */
+.site-footer {
+    background-color: #006400; /* xanh đậm ví dụ */
+    padding: 40px 0;
+}
+
+/* tiêu đề Quick Links */
+.site-footer h5 {
+    color: #ffffff;            /* trắng */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* menu footer */
+.footer-menu li {
+    margin-bottom: 10px;
+}
+
+.footer-menu li a {
+    color: #ffffff;            /* chữ trắng */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+/* icon bên trái */
+.footer-menu li a i {
+    color: #ffcc00;            /* màu icon vàng */
+    margin-right: 8px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+/* khi hover */
+.footer-menu li a:hover {
+    color: #ffcc00;            /* chữ đổi màu vàng */
+}
+.footer-menu li a:hover i {
+    color: #ffffff;            /* icon đổi trắng khi hover */
+}

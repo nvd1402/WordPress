@@ -156,3 +156,10 @@ if ( ! function_exists( 'twentytwentyfive_format_binding' ) ) :
 		}
 	}
 endif;
+// functions.php
+register_nav_menus(array(
+    'footer1' => 'Footer Cột 1',
+    'footer2' => 'Footer Cột 2',
+    'footer3' => 'Footer Cột 3',
+));
+

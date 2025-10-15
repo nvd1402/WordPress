@@ -2986,7 +2986,9 @@ ul.wp-block-rss.is-grid li{
   color:currentColor;
   fill:currentColor;
 }
-
+.wp-social-link{
+  background: none;
+}
 :where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link{
   background-color:#f0f0f0;
   color:#444;
