@@ -7827,5 +7827,123 @@ body.single .entry-content p {
 .view-all a:hover {
 	text-decoration: underline;
 }
+/*11*/
+/* Reset toàn bộ line mặc định của theme */
+.custom-latest-posts,
+.custom-latest-posts td,
+.custom-latest-posts th,
+.custom-latest-posts tr {
+	border: none;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Bảng của bạn */
+.custom-latest-posts {
+	margin: 0;
+	width: 100%;
+	table-layout: fixed;
+	border-spacing: 0;
+	border-collapse: separate;
+	border-top: 1px solid #ddd; /* line trên cùng */
+	border-bottom: 1px solid #ddd; /* line dưới cùng */
+}
+
+/* Ô bài viết */
+.custom-latest-posts td {
+	align-items: flex-start;
+	padding: 10px 15px;
+	vertical-align: top;
+	font-size: 13px;
+	line-height: 1.5;
+	width: 50%;
+	word-break: break-word;
+	background: #fff;
+	border-bottom: 1px solid #ddd; /* line ngang */
+	font-family: "Dosis";
+}
+
+/* Line dọc ở giữa */
+.custom-latest-posts tr td:first-child {
+	border-right: 1px solid #ddd;
+}
+
+/* Không có viền ngoài trái/phải */
+.custom-latest-posts tr td:last-child {
+	border-right: none;
+}
+
+/* Số thứ tự */
+.custom-post-number {
+	font-size: 26px;
+	font-weight: 700;
+	color: #000;
+	margin-right: 8px;
+	font-family: "Dosis";
+}
+
+/* Link bài viết */
+.custom-latest-posts a {
+	color: #000;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.custom-latest-posts a:hover {
+	color: #007bff;
+	text-decoration: underline;
+}
+
+/* Hover nhẹ */
+.custom-latest-posts tr:hover td {
+	background: #f9f9f9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.custom-latest-posts,
+	.custom-latest-posts tbody,
+	.custom-latest-posts tr,
+	.custom-latest-posts td {
+		display: block;
+		width: 100%;
+	}
+	.custom-latest-posts td {
+		border-right: none !important;
+	}
+}
+/* ====== TIÊU ĐỀ "BÀI VIẾT MỚI NHẤT" VỚI LINE ĐỎ ====== */
+.custom-archive-widget {
+	position: relative;
+	margin-bottom: 0;
+	padding-top: 0;
+}
+
+/* Line đỏ đậm chạy ngang phía sau chữ */
+.custom-archive-widget::before {
+	content: "";
+	position: absolute;
+	top: 97px; /* vị trí line */
+	left: 0;
+	width: 48%;
+	height: 1px;
+	background: #c30000; /* đỏ đậm */
+	z-index: 1;
+}
+
+/* Tiêu đề */
+.custom-title {
+	position: relative;
+	display: inline-block;
+	background: #fff; /* nền trắng để che line phía sau */
+	padding-right: 10px;
+	font-size: 22px; /* 🔥 chữ to hơn */
+	font-weight: 800;
+	color: #000;
+	z-index: 2;
+	text-transform: none; /* hoặc uppercase nếu muốn in hoa */
+	line-height: 1;
+	margin-bottom: 15px;
+}
 
 

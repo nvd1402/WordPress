@@ -112,42 +112,27 @@ if (is_single()) { ?>
         </div>
     </div>
 <?php } else { ?>
-
-    <!-- Danh sách bài viết (archive, home, search, v.v.) -->
     <article <?php post_class('news-item'); ?> id="post-<?php the_ID(); ?>">
-
         <div class="news-card">
-
-            <!-- Ảnh đại diện -->
             <?php if (has_post_thumbnail()) : ?>
                 <div class="news-thumb">
-                    <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail('medium_large'); ?>
-                    </a>
+                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('medium_large'); ?></a>
                 </div>
             <?php endif; ?>
-
-            <!-- Cột ngày tháng -->
             <div class="news-date">
                 <div class="day"><?php echo get_the_date('d'); ?></div>
                 <div class="month">THÁNG <?php echo get_the_date('m'); ?></div>
             </div>
-
-            <!-- Nội dung bài viết -->
             <div class="news-content">
                 <div class="news-text">
-                    <h2 class="news-title">
-                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                    </h2>
+                    <h2 class="news-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                     <div class="news-excerpt">
                         <?php echo wp_trim_words(get_the_excerpt(), 50, ' [...]'); ?>
                     </div>
                 </div>
             </div>
-
         </div>
     </article>
-
 <?php } ?>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
