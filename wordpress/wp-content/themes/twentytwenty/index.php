@@ -92,9 +92,10 @@ get_header();
             </div>
 
             <!-- Cột phải -->
-            <div class="col-3 extra-column">
-                <?php get_sidebar('extra'); ?>
+            <div class="col-3 comment-column">
+                <?php get_sidebar('comments'); ?>
             </div>
+
 
         </div>
     </div>
