@@ -101,7 +101,8 @@ if (is_single()) { ?>
 
                     <!-- Nút bấm -->
                     <div class="view-all">
-                        <a href="#" id="toggle-posts" data-nonce="<?php echo wp_create_nonce('load_more_posts'); ?>">Xem tất cả tin tức</a>
+                        <a href="<?php echo get_post_type_archive_link('post'); ?>">Xem tất cả tin tức</a>
+
                     </div>
 
                 </div>
