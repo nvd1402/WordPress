@@ -114,11 +114,11 @@ if (is_single()) { ?>
 <?php } else { ?>
     <article <?php post_class('news-item'); ?> id="post-<?php the_ID(); ?>">
         <div class="news-card">
-            <?php if (has_post_thumbnail()) : ?>
-                <div class="news-thumb">
-                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('medium_large'); ?></a>
-                </div>
-            <?php endif; ?>
+<!--            --><?php //if (has_post_thumbnail()) : ?>
+<!--                <div class="news-thumb">-->
+<!--                    <a href="--><?php //the_permalink(); ?><!--">--><?php //the_post_thumbnail('medium_large'); ?><!--</a>-->
+<!--                </div>-->
+<!--            --><?php //endif; ?>
             <div class="news-date">
                 <div class="day"><?php echo get_the_date('d'); ?></div>
                 <div class="month">THÁNG <?php echo get_the_date('m'); ?></div>
