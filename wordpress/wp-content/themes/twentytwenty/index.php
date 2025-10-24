@@ -61,45 +61,104 @@ get_header();
         </header>
     <?php endif; ?>
 
-    <!-- ✅ Bắt đầu bố cục 3 cột -->
-    <div class="page-layout container">
-        <div class="row">
 
-            <!-- Cột trái -->
-            <div class="col-3 archive-column">
-                <?php get_sidebar('archive'); ?>
+    <?php if ( is_search() ) : ?>
+        <?php if ( is_search() ) : ?>
+            <!-- ✅ Trang Search: bố cục 3 cột (3-6-3) -->
+
+            <!-- 🔍 Form search nằm riêng phía trên -->
+            <div class="search-bar container mb-5">
+                <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+                    <label>
+                        <input type="search" class="search-field" placeholder="Search topics or keywords"
+                               value="<?php echo get_search_query(); ?>" name="s" />
+                    </label>
+                    <input type="submit" class="search-submit" value="Search" />
+                </form>
             </div>
 
-            <!-- Cột giữa -->
-            <div class="col-6 content-column">
-                <?php
-                if ( have_posts() ) {
-                    while ( have_posts() ) {
-                        the_post();
-                        get_template_part( 'template-parts/content', get_post_type() );
-                    }
-                } elseif ( is_search() ) {
-                    ?>
-                    <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-                        <label>
-                            <input type="search" class="search-field" placeholder="Search topics or keywords" value="<?php echo get_search_query(); ?>" name="s" />
-                        </label>
-                        <input type="submit" class="search-submit" value="Search" />
-                    </form>
+            <!-- 📄 Bố cục 3 cột -->
+            <div class="page-layout container">
+                <div class="row">
+                    <!-- Cột trái -->
+                    <div class="col-3 archive-column">
+                        <?php get_sidebar('search'); ?>
+                    </div>
+
+                    <!-- Cột giữa -->
+                    <div class="col-6 search-results-column">
+                        <?php
+                        if ( have_posts() ) {
+                            while ( have_posts() ) {
+                                the_post(); ?>
+                                <div class="news-item-wrapper mb-4">
+                                    <article <?php post_class('news-item'); ?> id="post-<?php the_ID(); ?>">
+                                        <div class="news-card">
+                                            <?php if ( has_post_thumbnail() ) : ?>
+                                                <div class="news-thumb">
+                                                    <a href="<?php the_permalink(); ?>">
+                                                        <?php the_post_thumbnail('medium_large'); ?>
+                                                    </a>
+                                                </div>
+                                            <?php endif; ?>
+
+                                            <div class="news-date">
+                                                <div class="day"><?php echo get_the_date('d'); ?></div>
+                                                <div class="month">THÁNG <?php echo get_the_date('m'); ?></div>
+                                            </div>
+
+                                            <div class="news-content">
+                                                <h2 class="news-title">
+                                                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                                </h2>
+                                                <div class="news-excerpt">
+                                                    <?php echo wp_trim_words(get_the_excerpt(), 40, ' [...]'); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                                <?php
+                            }
+                        } else {
+
+                        }
+                        ?>
+                    </div>
+
+                    <!-- Cột phải -->
+                    <div class="col-3 comment-column">
+
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+
+    <?php else : ?>
+        <!-- ✅ Nếu KHÔNG phải trang search: bố cục 3 cột -->
+        <div class="page-layout container">
+            <div class="row">
+                <div class="col-3 archive-column">
+                    <?php get_sidebar('archive'); ?>
+                </div>
+
+                <div class="col-6 content-column">
                     <?php
-                }
-                ?>
+                    if ( have_posts() ) {
+                        while ( have_posts() ) {
+                            the_post();
+                            get_template_part( 'template-parts/content', get_post_type() );
+                        }
+                    }
+                    ?>
+                </div>
+
+                <div class="col-3 comment-column">
+                    <?php get_sidebar('comments'); ?>
+                </div>
             </div>
-
-            <!-- Cột phải -->
-            <div class="col-3 comment-column">
-                <?php get_sidebar('comments'); ?>
-            </div>
-
-
         </div>
-    </div>
-    <!-- ✅ Kết thúc bố cục 3 cột -->
+    <?php endif; ?>
 
     <?php get_template_part( 'template-parts/pagination' ); ?>
 
