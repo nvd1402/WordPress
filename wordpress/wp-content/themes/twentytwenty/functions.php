@@ -33,6 +33,7 @@
  *
  * @since Twenty Twenty 1.0
  */
+
 function enqueue_bootstrap_comment_style() {
     wp_enqueue_style('bootstrap-css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css');
     wp_enqueue_script('bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js', array('jquery'), null, true);

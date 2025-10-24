@@ -128,6 +128,42 @@ get_header();
                     </div>
                 </div>
             </div>
+            <!-- 🧩 Latest News Timeline (chuẩn mẫu sát lề trái) -->
+            <div class="latest-news-timeline">
+                <h3 class="timeline-heading">Latest News</h3>
+
+                <ul class="timeline">
+                    <?php
+                    $recent_posts = new WP_Query(array(
+                        'posts_per_page' => 4,
+                        'post_status'    => 'publish',
+                        'orderby'        => 'date',
+                        'order'          => 'DESC',
+                    ));
+
+                    if ($recent_posts->have_posts()) :
+                        while ($recent_posts->have_posts()) :
+                            $recent_posts->the_post(); ?>
+
+                            <li>
+                                <div class="timeline-header">
+                                    <a href="<?php the_permalink(); ?>" class="timeline-title"><?php the_title(); ?></a>
+                                    <span class="timeline-date"><?php echo get_the_date('j F, Y'); ?></span>
+                                </div>
+                                <p class="timeline-excerpt"><?php echo wp_trim_words(get_the_excerpt(), 50, '...'); ?></p>
+                            </li>
+
+
+                        <?php
+                        endwhile;
+                        wp_reset_postdata();
+                    else :
+                        echo '<li><p>Không có bài viết mới.</p></li>';
+                    endif;
+                    ?>
+                </ul>
+            </div>
+
         <?php endif; ?>
 
     <?php else : ?>
