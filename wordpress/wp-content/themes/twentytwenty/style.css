@@ -8076,3 +8076,91 @@ body.single .entry-content p {
 .col-6{
 	margin-top: 95px !important;
 }
+/*14*/
+/* ==== Sidebar Bình luận mới nhất (phiên bản nhỏ gọn) ==== */
+.sidebar-search-comment {
+	background: none;
+	padding: 0;
+	margin-top: 0;
+}
+
+/* Tiêu đề */
+.sidebar-search-comment .sidebar-title {
+	font-size: 17px;
+	font-weight: 600;
+	color: #222;
+	margin-bottom: 12px;
+}
+
+/* Toàn bộ khung comment */
+.comment-box {
+	margin-top: 15px;
+}
+
+/* Ảnh đại diện */
+.comment-box img.user-photo {
+	width: 40px;
+	height: 40px;
+}
+
+/* Căn chỉnh khung */
+.comment-box .media-left {
+	padding-right: 8px;
+	width: 55px;
+}
+
+/* Phần tên + nội dung */
+.comment-box .media-body p {
+	border: 1px solid #ddd;
+	padding: 8px;
+	font-size: 13px;
+	line-height: 1.5;
+	margin: 0;
+	color: #444;
+}
+
+/* Tiêu đề (tên người bình luận) */
+.comment-box .media-heading {
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	padding: 5px 8px;
+	position: relative;
+	margin-bottom: -1px;
+	font-weight: 500;
+	font-size: 14px;
+}
+
+/* "Móc nối" ở đầu tiêu đề */
+.comment-box .media-heading:before {
+	content: "";
+	width: 10px;
+	height: 10px;
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	border-width: 1px 0 0 1px;
+	transform: rotate(-45deg);
+	position: absolute;
+	top: 8px;
+	left: -5px;
+}
+
+/* Comment con (cân đối hơn) */
+.comment-box .media {
+	margin-top: 10px;
+}
+
+.comment-box .media .media-body p {
+	font-size: 12.5px;
+	padding: 6px 8px;
+}
+
+.comment-box .media .media-heading {
+	font-size: 13px;
+	padding: 5px 8px;
+}
+
+/* Giảm độ đậm avatar comment con */
+.comment-box .media .user-photo {
+	width: 35px;
+	height: 35px;
+}

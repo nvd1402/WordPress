@@ -94,25 +94,21 @@ get_header();
                                 <div class="news-item-wrapper mb-4">
                                     <article <?php post_class('news-item'); ?> id="post-<?php the_ID(); ?>">
                                         <div class="news-card">
-                                            <?php if ( has_post_thumbnail() ) : ?>
+                                            <?php if (has_post_thumbnail()) : ?>
                                                 <div class="news-thumb">
-                                                    <a href="<?php the_permalink(); ?>">
-                                                        <?php the_post_thumbnail('medium_large'); ?>
-                                                    </a>
+                                                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('medium_large'); ?></a>
                                                 </div>
                                             <?php endif; ?>
-
                                             <div class="news-date">
                                                 <div class="day"><?php echo get_the_date('d'); ?></div>
                                                 <div class="month">THÁNG <?php echo get_the_date('m'); ?></div>
                                             </div>
-
                                             <div class="news-content">
-                                                <h2 class="news-title">
-                                                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                                </h2>
-                                                <div class="news-excerpt">
-                                                    <?php echo wp_trim_words(get_the_excerpt(), 40, ' [...]'); ?>
+                                                <div class="news-text">
+                                                    <h2 class="news-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                                                    <div class="news-excerpt">
+                                                        <?php echo wp_trim_words(get_the_excerpt(), 20, ' [...]'); ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -128,7 +124,7 @@ get_header();
 
                     <!-- Cột phải -->
                     <div class="col-3 comment-column">
-
+                        <?php get_sidebar('search_comment'); ?>
                     </div>
                 </div>
             </div>
