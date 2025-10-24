@@ -8164,3 +8164,133 @@ body.single .entry-content p {
 	width: 35px;
 	height: 35px;
 }
+/*15*/
+/* ==== Latest News Timeline ==== */
+.latest-news-timeline {
+	width: 100%;
+	max-width: 700px;
+	margin: 40px 0 0 50px; /* ✅ cách lề trái 50px */
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.timeline-heading {
+	font-size: 22px;
+	font-weight: 600;
+	color: #222;
+	margin-bottom: 25px;
+}
+
+/* Danh sách timeline */
+ul.timeline {
+	list-style: none;
+	position: relative;
+	margin: 0;
+	padding-left: 70px; /* ✅ đẩy nội dung ra để tránh vòng tròn */
+}
+
+/* Đường dọc */
+ul.timeline::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 30px; /* ✅ line nằm chính giữa vòng tròn */
+	width: 2px;
+	height: 100%;
+	background: #d4d9df;
+}
+
+/* Mỗi item */
+ul.timeline > li {
+	margin: 30px 0;
+	position: relative;
+}
+
+/* Vòng tròn */
+ul.timeline > li::before {
+	content: '';
+	background: #fff;
+	border: 3px solid #22c0e8;
+	display: inline-block;
+	position: absolute;
+	border-radius: 50%;
+	left: -48px; /* ✅ chính giữa line */
+	width: 18px;
+	height: 18px;
+	top: 0;
+	z-index: 2;
+}
+
+/* --- Header chứa tiêu đề & ngày (luôn cùng hàng) --- */
+.timeline-header {
+	display: grid;
+	grid-template-columns: 1fr auto; /* ✅ cột trái: tiêu đề, cột phải: ngày */
+	align-items: start;
+	column-gap: 40px; /* ✅ khoảng cách giữa 2 cột */
+}
+
+/* Tiêu đề bài viết */
+.timeline-title {
+	font-size: 15px;
+	color: #007bff;
+	text-decoration: none;
+	word-break: break-word;
+	line-height: 1.4;
+}
+
+.timeline-title:hover {
+	text-decoration: underline;
+}
+
+/* Ngày đăng */
+.timeline-date {
+	font-size: 15px;
+	color: #007bff;
+	white-space: nowrap;
+	text-align: right;
+	margin-top: 2px;
+	line-height: 1.4;
+}
+
+/* Đoạn mô tả */
+.timeline-excerpt {
+	font-size: 15px;
+	color: #444;
+	line-height: 1.6;
+	margin-top: 6px;
+	text-align: justify;
+}
+
+/* Hiệu ứng hover cho timeline item */
+ul.timeline > li:hover::before {
+	background: #22c0e8;
+	transition: 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.latest-news-timeline {
+		margin-left: 20px;
+	}
+
+	ul.timeline {
+		padding-left: 50px;
+	}
+
+	ul.timeline::before {
+		left: 20px;
+	}
+
+	ul.timeline > li::before {
+		left: 11px;
+	}
+
+	.timeline-header {
+		grid-template-columns: 1fr;
+		row-gap: 6px;
+	}
+
+	.timeline-date {
+		text-align: left;
+	}
+}
+
